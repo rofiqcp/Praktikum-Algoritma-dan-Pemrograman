@@ -1,6 +1,8 @@
 # Flask Web — Pertemuan 09
 
-## Setup & Run
+Contoh runnable untuk route, template, form, pencarian, validasi, halaman detail, 404, dan automated test.
+
+## Menjalankan
 ```bash
 python -m venv .venv
 python -m pip install -r requirements.txt
@@ -13,4 +15,6 @@ Buka `http://127.0.0.1:5000`.
 python -m unittest -v test_app.py
 ```
 
-Routes: `/`, `/about`, `/products`, `/products/new`; ada custom 404. Data masih in-memory sehingga restart server mengembalikan data awal.
+Route utama: `/`, `/about`, `/products`, `/products?q=key`, `/products/<id>`, dan `/products/new`. Data contoh disimpan di memori sehingga kembali ke kondisi awal saat server dimulai ulang.
+
+Gunakan `../../Jobsheet.md` dan `../UI_UX_CHECKLIST.md` untuk langkah praktik lengkap.
