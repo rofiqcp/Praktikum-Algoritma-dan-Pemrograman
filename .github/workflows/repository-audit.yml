@@ -4,6 +4,7 @@ on:
     branches: [v1]
   pull_request:
     branches: [v1]
+
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -17,3 +18,20 @@ jobs:
           node-version: '22'
       - name: Validate structure and syntax
         run: python scripts/audit_repo.py
+
+  runtime-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install shared Python dependencies
+        run: python -m pip install "Flask>=3,<4" "Flask-Cors>=4,<7" "requests>=2.31,<3" "gunicorn>=22,<24"
+      - name: Run Python runtime smoke tests
+        run: bash scripts/runtime_smoke.sh python
+      - name: Run Node runtime smoke tests
+        run: bash scripts/runtime_smoke.sh node
