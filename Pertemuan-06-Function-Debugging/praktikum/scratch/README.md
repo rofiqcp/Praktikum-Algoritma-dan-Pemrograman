@@ -1,11 +1,12 @@
-# My Blocks Scratch — Pertemuan 06
+# Scratch P06 — My Blocks
 
-Buat custom block dengan nama bermakna, misalnya:
+Buat custom block `hitung total (harga) (jumlah)` dan `tampilkan hasil (nilai)`. Panggil block dari script utama dan bandingkan dengan function Python.
 
-```text
-define tampilkanTotal (harga) (jumlah)
-set [total] to ((harga)*(jumlah))
-say (join [Total: ] (total))
-```
+## Target
+- Memisahkan script panjang menjadi bagian kecil.
+- Menggunakan input pada My Blocks.
+- Menjelaskan kapan block dipanggil.
+- Membandingkan My Blocks dengan `def`, parameter, dan function call pada Python.
 
-Pecah program nilai menjadi My Blocks: `bacaData`, `validasiNilai`, `tentukanGrade`, `tampilkanHasil`. Bandingkan dengan function Python.
+## Challenge
+Ambil project Scratch P05 dan pindahkan satu proses berulang menjadi My Blocks tanpa mengubah hasil program.
