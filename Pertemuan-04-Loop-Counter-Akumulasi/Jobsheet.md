@@ -60,7 +60,11 @@ Jalankan `praktikum/python/03_tebak_angka.py`.
 Jelaskan mengapa jumlah iterasi tidak selalu diketahui sebelum program berjalan.
 
 ### P05 — Sentinel
-Jalankan contoh input berulang pada folder `praktikum/python/` yang memakai `0` sebagai tanda selesai.
+Jalankan:
+```bash
+python praktikum/python/04_kasir_sentinel.py
+```
+Program memakai `0` sebagai tanda selesai. Sentinel tidak boleh ikut dihitung sebagai data transaksi.
 
 | Urutan input | Expected jumlah data | Expected total |
 |---|---:|---:|
