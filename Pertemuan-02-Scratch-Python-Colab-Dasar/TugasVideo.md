@@ -1,44 +1,30 @@
-# Tugas Video Pertemuan 02 — Scratch + Python Colab I: Sequence, Input, Output, dan Variabel
+# Tugas Video — Pertemuan 02
 
-## Tujuan
+## Durasi
+10–18 menit, individu, minimal 720p.
 
-Buat **video laporan praktikum**, bukan video membaca slide. Semua program wajib benar-benar dijalankan dan hasilnya harus terlihat.
+## Wajib Didemokan
+- Biodata interaktif.
+- Kalkulator belanja.
+- Konversi menit.
+- Konversi suhu.
+- Estimasi perjalanan.
+- Minimal satu versi Scratch dan padanan Python/Colab.
 
-## Isi Wajib
+## Struktur
+1. Pembukaan: nama/NIM/tujuan/environment.
+2. Jelaskan sequence, input-output, variable, tipe data, operator.
+3. Jalankan seluruh program dengan input nyata.
+4. Tunjukkan satu `ValueError`/bug dan proses retest.
+5. Tunjukkan satu modifikasi mandiri + dua test.
+6. Penutup: simpulkan hubungan Scratch ↔ Python.
 
-1. **Pembukaan** — nama, NIM, pertemuan, target kompetensi.
-2. **Mental model** — jelaskan konsep utama dengan diagram/flow singkat.
-3. **Demo program** — jalankan seluruh contoh pada folder `praktikum/`.
-4. **Code walkthrough** — jelaskan bagian inti, input, proses, output, dan minimal satu keputusan teknis.
-5. **Modifikasi** — tunjukkan perubahan yang Anda buat sendiri.
-6. **Testing** — tampilkan minimal kasus normal, boundary, dan invalid/error.
-7. **Debugging** — tampilkan satu error nyata, bukti penyebab, lalu perbaikannya.
-8. **Penutup** — kesimpulan dan hal yang masih perlu dipelajari.
-
-## Ketentuan
-
-- Durasi disarankan 8–15 menit.
-- Screen recording wajib; wajah presenter mengikuti kebijakan pengajar.
-- Terminal/browser/output harus terbaca.
-- Jangan hanya menunjukkan source code tanpa menekan Run.
-- Secret/token harus disamarkan.
-- Cantumkan commit hash terakhir yang digunakan saat demo.
-
-## Rubrik 100 Poin
-
-| Aspek | Poin |
+## Rubrik
+| Aspek | Bobot |
 |---|---:|
-| Pemahaman konsep | 25 |
-| Program benar-benar berjalan | 30 |
-| Modifikasi dan kualitas kode | 15 |
-| Testing + debugging berbasis bukti | 20 |
-| Penyampaian dan dokumentasi | 10 |
-
-## Checklist
-
-- [ ] Semua contoh wajib dijalankan.
-- [ ] Ada modifikasi sendiri.
-- [ ] Ada minimal 3 test case.
-- [ ] Ada satu debugging nyata.
-- [ ] Output dapat dibaca.
-- [ ] Tidak ada secret di layar/repo.
+| Konsep | 20% |
+| Demo program berjalan | 30% |
+| Pengujian | 15% |
+| Debugging | 15% |
+| Modifikasi | 10% |
+| Penyampaian | 10% |

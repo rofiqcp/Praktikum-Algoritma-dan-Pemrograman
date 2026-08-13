@@ -1,7 +1,1 @@
-{
-  "name":"pertemuan-13-node-express",
-  "version":"1.0.0",
-  "private":true,
-  "scripts":{"start":"node server.js"},
-  "dependencies":{"express":"^5.1.0"}
-}
+{"name":"pertemuan-13-node-express","version":"1.0.0","private":true,"description":"Praktikum Node.js Express","main":"server.js","scripts":{"start":"node server.js","test":"node --test"},"engines":{"node":">=18"},"dependencies":{"express":">=4 <6"},"devDependencies":{"supertest":">=6 <8"}}

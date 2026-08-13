@@ -1,8 +1,10 @@
-# Run
+# Python Lokal Pertemuan 07
+
+## Run
 ```bash
 python -m venv .venv
-# aktifkan venv
 python main.py
-python test_utils.py
+python -m unittest discover -s tests -v
 ```
-Lalu `git init`, `git add .`, `git commit -m "feat: program diskon"`.
+
+`debug_demo.py` sengaja error. Jangan “fix” sebelum mencatat traceback, file/baris, hipotesis, dan test kecil.

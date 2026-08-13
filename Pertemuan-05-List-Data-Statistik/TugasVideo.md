@@ -1,3 +1,12 @@
-# Tugas Video Pertemuan 05
+# Tugas Video — Pertemuan 05
 
-Demo versi Scratch + Python/Colab, jelaskan list vs banyak variable, dictionary, pencarian/agregasi, minimal empat test case, satu `IndexError/KeyError` atau kasus list kosong yang diperbaiki, dan satu fitur tambahan.
+## Demo Wajib
+- List Scratch dan padanan Python.
+- Statistik nilai.
+- Daftar belanja.
+- Stok list-of-dictionaries + search.
+- Statistik suhu.
+- Voting.
+- Satu `IndexError`, `KeyError`, atau kasus list kosong dan cara memperbaikinya.
+
+Durasi rekomendasi 10–18 menit. Rubrik: konsep 20%, demo 30%, testing 15%, debugging 15%, modifikasi 10%, penyampaian 10%.

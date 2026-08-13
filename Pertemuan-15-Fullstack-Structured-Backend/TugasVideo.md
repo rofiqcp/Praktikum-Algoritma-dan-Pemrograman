@@ -1,3 +1,13 @@
-# Tugas Video Pertemuan 15
+# Tugas Video — Pertemuan 15
 
-Demo ERD, JOIN, route/service/repository, database dua tabel, validation/error contract, backend test, Node UI, parameterized SQL, security minimum, dan satu perubahan fitur beserta regression test.
+## Demo Wajib
+- ERD/schema category→products.
+- JOIN query.
+- Struktur route/service/repository/schema/db.
+- CRUD produk dari Node UI atau API client.
+- Transaction mutasi stok.
+- Validation, 404, conflict.
+- Parameterized query dan security minimum.
+- Unit test + satu bug/regression fix.
+
+Durasi rekomendasi 15–25 menit.

@@ -1,61 +1,109 @@
-# Praktikum Algoritma dan Pemrograman — Branch v1
+# Praktikum Algoritma dan Pemrograman — v1
 
-Repository ini mengimplementasikan **16 pertemuan terstruktur** dari buku panduan *Scratch → Python → Web → API → Deployment → Node.js → Database → Full Stack*.
+Repository praktikum **16 pertemuan terstruktur** berdasarkan *Buku Panduan Praktik: Pemrograman Dasar hingga Full Stack (Edisi Agustus 2026)*.
 
-## Struktur Standar
+```text
+Scratch
+  ↓
+Scratch + Python / Google Colab
+  ↓
+Python lokal + VS Code + Git/GitHub
+  ↓
+Python Web (Flask)
+  ↓
+REST API
+  ↓
+Deployment
+  ↓
+Node.js + Express
+  ↓
+Node + Python + SQLite
+  ↓
+Backend terstruktur + relasi database
+  ↓
+Final Full Stack
+```
 
-Setiap pertemuan memiliki:
-- `Materi.md`
-- `Jobsheet.md`
-- `TugasVideo.md`
+## Struktur Setiap Pertemuan
+Pertemuan reguler:
+```text
+Pertemuan-XX-.../
+├── Materi.md
+├── Jobsheet.md
+├── TugasVideo.md
+└── praktikum/
+    ├── README.md
+    └── program runnable / instruksi Scratch
+```
 
-Khusus **Pertemuan 08, 12, dan 16**, `TugasVideo.md` diganti dengan **`Project.md`** sesuai checkpoint/final project.
+Khusus **Pertemuan 08, 12, dan 16**, `TugasVideo.md` diganti `Project.md`:
+```text
+Pertemuan-XX-.../
+├── Materi.md
+├── Jobsheet.md
+├── Project.md
+└── praktikum/
+    └── starter runnable
+```
 
-Setiap folder juga memiliki `praktikum/` yang berisi contoh program/instruksi yang wajib dijalankan.
-
-## Peta Pertemuan
-
-| No | Topik | Lingkungan utama | Output runnable |
+## Peta 16 Pertemuan
+| No | Materi | Environment | Output Utama |
 |---:|---|---|---|
-| 01 | [Scratch: Algoritma Visual dan Dasar Pemrograman](Pertemuan-01-Scratch-Algoritma-Visual/) | Scratch | `praktikum/` |
-| 02 | [Scratch + Python Colab I: Sequence, Input, Output, dan Variabel](Pertemuan-02-Scratch-Python-Colab-Dasar/) | Scratch + Google Colab | `praktikum/` |
-| 03 | [Scratch + Python Colab II: Percabangan, Operator Logika, dan Validasi](Pertemuan-03-Percabangan-Validasi/) | Scratch + Google Colab | `praktikum/` |
-| 04 | [Scratch + Python Colab III: Loop, Counter, dan Akumulasi](Pertemuan-04-Loop-Counter-Akumulasi/) | Scratch + Google Colab | `praktikum/` |
-| 05 | [Scratch + Python Colab IV: List, Data, Pencarian, dan Statistik](Pertemuan-05-List-Data-Statistik/) | Scratch + Google Colab | `praktikum/` |
-| 06 | [Scratch + Python Colab V: Function, Dekomposisi, dan Debugging](Pertemuan-06-Function-Debugging/) | Scratch + Google Colab | `praktikum/` |
-| 07 | [VS Code, Python Lokal, Git, dan GitHub](Pertemuan-07-VSCode-Git-GitHub/) | VS Code + Python + Git | `praktikum/` |
-| 08 | [Project Checkpoint 1: Algoritma + Python Lokal + GitHub](Pertemuan-08-Project-Checkpoint-1/) | VS Code + Python + Git | `praktikum/` |
-| 09 | [Python Web Programming dengan Flask](Pertemuan-09-Python-Web-Flask/) | Flask/Browser | `praktikum/` |
-| 10 | [Python API: HTTP, JSON, REST, dan Integrasi](Pertemuan-10-Python-API-REST/) | Flask/Browser | `praktikum/` |
-| 11 | [Deployment: GitHub ke Aplikasi Publik](Pertemuan-11-Deployment/) | Flask/Browser | `praktikum/` |
-| 12 | [Project Checkpoint 2: Python Web + API + Deployment](Pertemuan-12-Project-Checkpoint-2/) | Flask/Browser | `praktikum/` |
-| 13 | [Node.js, npm, Express, dan Web Lokal](Pertemuan-13-NodeJS-Express/) | Node.js/Express | `praktikum/` |
-| 14 | [Integrasi Node.js + Python Backend + SQLite](Pertemuan-14-Node-Python-SQLite/) | Node.js + Python + SQLite | `praktikum/` |
-| 15 | [Node + Python + Database Terstruktur](Pertemuan-15-Fullstack-Structured-Backend/) | Node.js + Python + SQLite | `praktikum/` |
-| 16 | [Final Project: Full Stack Node.js + Python + Database](Pertemuan-16-Final-Project/) | Node.js + Python + SQLite | `praktikum/` |
+| 01 | [Scratch: algoritma visual](Pertemuan-01-Scratch-Algoritma-Visual/) | Scratch | Mini game/animasi |
+| 02 | [Sequence, input/output, variable](Pertemuan-02-Scratch-Python-Colab-Dasar/) | Scratch + Colab + Python | Program interaktif dua versi |
+| 03 | [Percabangan & validasi](Pertemuan-03-Percabangan-Validasi/) | Scratch + Colab + Python | Program keputusan |
+| 04 | [Loop, counter, akumulasi](Pertemuan-04-Loop-Counter-Akumulasi/) | Scratch + Colab + Python | Simulasi berulang |
+| 05 | [List, pencarian, statistik](Pertemuan-05-List-Data-Statistik/) | Scratch + Colab + Python | Pengolahan kumpulan data |
+| 06 | [Function, dekomposisi, debugging](Pertemuan-06-Function-Debugging/) | Scratch + Colab + Python | Program modular |
+| 07 | [VS Code, Python lokal, Git/GitHub](Pertemuan-07-VSCode-Git-GitHub/) | VS Code + terminal + Git | Repo Python pertama |
+| 08 | [Checkpoint 1](Pertemuan-08-Project-Checkpoint-1/) | Python CLI + GitHub | 1 dari 30 project |
+| 09 | [Python web Flask](Pertemuan-09-Python-Web-Flask/) | Flask + HTML/CSS/JS | Web lokal |
+| 10 | [Python REST API](Pertemuan-10-Python-API-REST/) | Flask + HTTP/JSON | API + client |
+| 11 | [Deployment](Pertemuan-11-Deployment/) | GitHub + cloud platform | Public URL |
+| 12 | [Checkpoint 2](Pertemuan-12-Project-Checkpoint-2/) | Flask + API + deploy | 1 dari 30 project |
+| 13 | [Node.js + Express](Pertemuan-13-NodeJS-Express/) | Node + npm + Express | Node web lokal |
+| 14 | [Node + Python + SQLite](Pertemuan-14-Node-Python-SQLite/) | Multi-service | Mini integrated app |
+| 15 | [Structured backend](Pertemuan-15-Fullstack-Structured-Backend/) | Node + Python + relational DB | Full stack preparation |
+| 16 | [Final Project](Pertemuan-16-Final-Project/) | Node + Python + DB | 1 dari 30 final project |
 
-## Jalur Belajar
+## Yang Harus Dijalankan
+Lihat **[RUNNING_GUIDE.md](RUNNING_GUIDE.md)**. Semua pertemuan memiliki program/instruksi yang harus benar-benar dijalankan.
 
-1. **Pertemuan 1**: algoritma visual di Scratch.
-2. **Pertemuan 2–6**: algoritma yang sama diterjemahkan ke Python/Google Colab.
-3. **Pertemuan 7–8**: workflow developer lokal, VS Code, Git/GitHub, checkpoint CLI.
-4. **Pertemuan 9–12**: Python web, REST API, deployment, checkpoint web/API.
-5. **Pertemuan 13–16**: Node.js, integrasi multi-service, database relasional, final full stack.
+- P01: Scratch.
+- P02–P06: Scratch + Python + notebook Google Colab.
+- P07–P08: Python lokal di VS Code/terminal + Git.
+- P09–P12: Flask/web/API/deployment.
+- P13: Node.js + Express.
+- P14–P16: Node + Python + SQLite/relational database.
 
-## Aturan Menjalankan
+## Prinsip Praktikum
+Mahasiswa tidak dinilai hanya dari “program jalan”. Setiap praktikum harus menunjukkan:
+1. mental model/algoritma;
+2. program benar-benar dijalankan;
+3. expected vs actual;
+4. boundary/invalid/failure test;
+5. debugging berbasis bukti;
+6. modifikasi mandiri;
+7. mulai pertemuan 7: Git history yang menunjukkan progres;
+8. dokumentasi setup/run/test.
 
-Baca `Jobsheet.md` pada setiap pertemuan. Jangan lompat langsung ke project akhir. Setiap mahasiswa harus menyimpan bukti:
-- command yang dijalankan;
-- output/response;
-- test case;
-- error yang ditemukan;
-- perubahan yang dilakukan;
-- commit Git.
+## Dokumen Pendukung
+- [Panduan menjalankan](RUNNING_GUIDE.md)
+- [Panduan pengajar](PANDUAN_PENGAJAR.md)
+- [Checklist audit repository](AUDIT_CHECKLIST.md)
+- [Referensi/lampiran](Referensi/)
+
+## Audit Otomatis
+```bash
+python scripts/audit_repo.py
+```
+Audit memeriksa struktur 16 pertemuan, file assignment yang benar, Python syntax, notebook/JSON, dan JavaScript syntax bila Node tersedia. Workflow GitHub Actions juga menjalankan audit pada branch `v1`.
+
+## Security Minimum
+Jangan commit `.env`, password, token, API key, credential database, `node_modules/`, `.venv/`, atau database runtime latihan. Gunakan environment variable dan placeholder seperti `<API_KEY>`.
 
 ## Catatan Scratch
+GitHub tidak mengeksekusi Scratch secara native. Folder praktikum Scratch berisi **spesifikasi blok langkah demi langkah** yang harus dirakit dan dijalankan di Scratch. Pertemuan 2–6 juga menyediakan implementasi Python/Colab setara.
 
-GitHub tidak dapat mengeksekusi project Scratch secara native. Untuk materi Scratch, folder `praktikum/` berisi **script blok yang presisi langkah demi langkah** yang harus direkonstruksi dan dijalankan di Scratch. Pertemuan 2–6 juga menyediakan program Python/Notebook setara untuk membandingkan algoritma yang sama.
-
-## Keamanan
-
-Jangan commit `.env`, password, token, API key, atau data sensitif. Gunakan placeholder dan environment variable.
+## Branch
+Materi versi ini dikembangkan pada branch **`v1`**.

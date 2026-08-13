@@ -1,2 +1,5 @@
-# Versi Scratch
-Buat variable `nama`, `nilai`, `grade`. `ask Nama?`; `ask Nilai?`; validasi `<nilai < 0 or nilai > 100>`, lalu `if/else` bertingkat untuk batas 90, 80, 75. Tampilkan hasil dengan `say`. Uji 74, 75, 76, -1, 101.
+# Padanan Scratch — Sistem Nilai
+
+Gunakan `if/else` bertingkat dari kondisi tertinggi. Validasi dulu nilai `<0` atau `>100`, lalu cek `>=90`, `>=80`, `>=75`, selain itu belum lulus.
+
+Uji 74, 75, 76, 89, 90, 100, -1, 101 dan bandingkan dengan Python.

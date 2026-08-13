@@ -1,9 +1,39 @@
-# Jobsheet Pertemuan 14
+# Jobsheet Pertemuan 14 — Node + Python + SQLite
 
-1. Terminal A: backend → install requirements → `python app.py`.
-2. Terminal B: frontend → `npm install` → `npm start`.
-3. Buka `http://localhost:3000`, tambah dan lihat task.
-4. Uji GET/POST/PATCH/DELETE backend dengan client manual/curl.
-5. Inspect SQLite melalui Python/SQLite tool.
-6. Matikan backend dan amati error frontend; bedakan connection/CORS/HTTP/data error.
-7. Tambah satu field atau operasi CRUD dan uji ulang.
+## Terminal 1 — Backend
+```bash
+cd praktikum/integrated-app/backend
+python -m venv .venv
+python -m pip install -r requirements.txt
+python app.py
+```
+Backend: `http://127.0.0.1:5001`.
+
+## Terminal 2 — Frontend
+```bash
+cd praktikum/integrated-app/frontend
+npm install
+npm start
+```
+Frontend: `http://127.0.0.1:3000`.
+
+## Percobaan Wajib
+1. Backend `/api/health`.
+2. SQLite dibuat otomatis dan seed data muncul.
+3. Frontend mengambil list dari Python.
+4. Create product dari browser.
+5. Update stock lewat API/curl.
+6. Delete resource.
+7. Uji validation dan not-found.
+8. Matikan backend lalu amati frontend error state.
+9. Jalankan backend tests.
+
+## Layer Failure Drill
+- backend mati → network/connection error;
+- CORS dimatikan → browser CORS error;
+- endpoint salah → 404;
+- payload salah → 400;
+- SQL constraint → conflict/validation.
+
+## Analisis
+Jelaskan layer mana yang bertanggung jawab untuk UI, HTTP, business validation, dan persistence.

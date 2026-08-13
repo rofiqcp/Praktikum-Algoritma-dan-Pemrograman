@@ -1,3 +1,15 @@
-# Tugas Video Pertemuan 03
+# Tugas Video — Pertemuan 03
 
-Video 8–15 menit wajib menunjukkan: konsep condition, versi Scratch, Run notebook/Python, code walkthrough, minimal tiga test case termasuk boundary dan invalid input, satu debugging nyata, modifikasi sendiri, serta kesimpulan. Penilaian: konsep 25, program berjalan 30, modifikasi 15, testing/debugging 20, penyampaian 10.
+Durasi 10–18 menit. Wajib menunjukkan program **dijalankan**, bukan hanya kode.
+
+## Demo
+- Sistem nilai dengan boundary 74/75/76.
+- Tarif parkir.
+- Seleksi wahana.
+- Promo toko.
+- Klasifikasi suhu.
+- Perbandingan satu flow Scratch dengan Python.
+- Satu bug condition/indentasi + retest.
+
+## Rubrik
+Konsep 20%, demo 30%, test 15%, debugging 15%, modifikasi 10%, penyampaian 10%.

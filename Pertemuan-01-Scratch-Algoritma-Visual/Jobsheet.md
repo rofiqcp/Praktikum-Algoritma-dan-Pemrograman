@@ -1,46 +1,92 @@
-# Jobsheet Pertemuan 01 — Scratch: Algoritma Visual dan Dasar Pemrograman
+# Jobsheet Pertemuan 01 — Scratch: Belajar Berpikir seperti Programmer
 
-## Tujuan Praktikum
+## Identitas Praktikum
 
-1. Menjelaskan input–process–output, sequence, event, condition, loop, dan variable.
-2. Membuat project Scratch yang mempunyai tujuan, aturan, skor, dan kondisi selesai.
-3. Melakukan debugging sederhana dengan menelusuri urutan blok.
+| Item | Isian |
+|---|---|
+| Nama |  |
+| NIM |  |
+| Kelas |  |
+| Tanggal |  |
+| Repository/Folder |  |
 
-## Prinsip Kerja
+## Tujuan
 
-Kerjakan berurutan: **prediksi → jalankan → amati → ubah → uji ulang → dokumentasikan**.
+Setelah praktikum, mahasiswa harus mampu menjelaskan konsep utama pertemuan, menjalankan seluruh contoh program, memodifikasi program secara mandiri, membuat test case, dan mendokumentasikan proses debugging.
+
+## Environment
+
+**Scratch Web (`https://scratch.mit.edu/`)**
 
 ## Persiapan
 
-Buka `https://scratch.mit.edu/` lalu ikuti blok pada `praktikum/scratch_game_tangkap_koin.md`. Tidak ada Python pada pertemuan ini.
+- Buat akun/masuk Scratch jika ingin menyimpan project.
+- Buka `praktikum/README.md` dan siapkan sprite Pemain dan Koin.
+- Aktifkan monitor variable `skor` agar perubahan state terlihat.
 
-## Percobaan Wajib
+## Pola Kerja Wajib
 
-1. Bangun Game Tangkap Koin persis dari algoritma dasar.
-2. Tambahkan target skor dan kondisi menang.
-3. Buat satu bug sengaja, reproduksi, lalu perbaiki.
-4. Tambahkan satu fitur challenge dan jelaskan variable/condition baru.
+```text
+PREDIKSI → JALANKAN → AMATI → CATAT → UBAH SATU HAL → UJI ULANG → SIMPULKAN
+```
+
+## Daftar Percobaan Wajib
+
+| No | Percobaan | Aktivitas |
+|---:|---|---|
+| 1 | **P01 — Sequence & Event** | Rakit gerak awal sprite menggunakan `when green flag clicked`, lalu event panah kiri/kanan. Prediksi posisi sebelum menjalankan. |
+| 2 | **P02 — Variable & Input** | Buat variable `skor`, `target`, dan satu input pengguna dengan `ask ... and wait`. |
+| 3 | **P03 — Condition & Loop** | Gunakan `forever` + `if touching` untuk collision koin. |
+| 4 | **P04 — Game Tangkap Koin** | Integrasikan gerak, skor, random position, suara, target menang, dan `stop all`. |
+| 5 | **P05 — Debug Challenge** | Sengaja buat event/condition salah, catat gejala, reproduksi, lalu perbaiki satu perubahan. |
+
+## Cara Menjalankan
+
+Jalankan dengan **Green Flag**. Untuk setiap perubahan, klik Stop lalu Green Flag kembali agar state awal dapat diuji.
+
+## Tabel Pengujian Wajib
+
+| No | Kasus Uji | Expected | Actual | Pass |
+|---:|---|---|---|:---:|
+| 1 | Pemain merespons panah kiri/kanan |  |  | ☐ |
+| 2 | Skor mulai dari 0 pada setiap Green Flag |  |  | ☐ |
+| 3 | Skor bertambah tepat 1 per koin |  |  | ☐ |
+| 4 | Koin berpindah setelah collision |  |  | ☐ |
+| 5 | Game berhenti saat target tercapai |  |  | ☐ |
+
+Tambahkan minimal dua test case buatan sendiri.
+
+## Log Debugging
+
+| Waktu/Step | Gejala | Bukti/Error | Hipotesis | Perubahan | Hasil Retest |
+|---|---|---|---|---|---|
+|  |  |  |  |  |  |
+|  |  |  |  |  |  |
+|  |  |  |  |  |  |
+
+## Pertanyaan Analisis
+
+1. Apa beda sequence dan event pada game?
+2. Mengapa pemeriksaan collision perlu loop?
+3. State apa saja yang disimpan variable?
+4. Bagaimana membuktikan bug berasal dari event, condition, atau variable?
+
+## Challenge Mandiri
+
+Tambahkan satu fitur yang mengubah alur program, buat dua test case, lalu pastikan fitur lama tetap bekerja.
 
 ## Bukti yang Dikumpulkan
 
-- Screenshot/rekaman program berhasil dijalankan.
-- Source code hasil perubahan sendiri.
-- Tabel test case berisi input, expected, actual, status.
-- Minimal tiga temuan debugging: gejala, penyebab, perbaikan.
-- Kesimpulan yang menjelaskan alur program, bukan hanya hasil akhir.
-
-## Aturan Pengujian
-
-Setiap program minimal diuji dengan:
-1. kasus normal;
-2. nilai batas;
-3. input salah/tidak valid;
-4. satu perubahan fitur yang dibuat mahasiswa.
+- Screenshot/rekaman program benar-benar dijalankan.
+- Source/project hasil perubahan sendiri.
+- Tabel expected vs actual.
+- Minimal tiga catatan debugging.
+- Jawaban analisis dan kesimpulan.
 
 ## Checklist Selesai
 
-- [ ] Saya dapat menjelaskan alur program tanpa membaca seluruh kode.
-- [ ] Saya menjalankan semua program pada folder `praktikum/`.
-- [ ] Saya melakukan perubahan sendiri dan menguji ulang.
-- [ ] Saya menyimpan bukti error dan perbaikannya.
-- [ ] Saya tidak memasukkan password/token/API key ke repository.
+- [ ] Semua program wajib sudah dijalankan.
+- [ ] Semua test utama memiliki expected dan actual.
+- [ ] Saya dapat menjelaskan alur tanpa membaca blok satu per satu.
+- [ ] Saya melakukan minimal satu modifikasi mandiri.
+- [ ] Saya mempunyai bukti error dan retest.

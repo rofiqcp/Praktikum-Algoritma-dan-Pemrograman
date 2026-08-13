@@ -1,12 +1,38 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
 .venv/
 venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secrets / environment
 .env
 .env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Node
 node_modules/
-*.sqlite
+npm-debug.log*
+yarn-error.log*
+
+# Runtime database / generated state
 *.db
-.DS_Store
+*.sqlite
+*.sqlite3
+instance/
+
+# IDE / OS
 .vscode/
-.pytest_cache/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build/deploy artifacts
+dist/
+build/
+*.log

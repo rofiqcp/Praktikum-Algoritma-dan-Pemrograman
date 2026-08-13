@@ -1,7 +1,12 @@
-from utils import hitung_diskon
-try: total=float(input("Total belanja: "))
-except ValueError: print("Harus angka"); raise SystemExit(1)
-member=input("Member? y/n: ").lower()=="y"
-try: diskon=hitung_diskon(total,member)
-except ValueError as e: print(e); raise SystemExit(1)
-print("Diskon:",diskon,"Bayar:",total-diskon)
+from utils import hitung_diskon,hitung_bayar,format_rupiah
+
+def main():
+    try:
+        total=float(input("Total belanja: "))
+        member=input("Member? (y/n): ").strip().lower()=="y"
+        print("Diskon:",format_rupiah(hitung_diskon(total,member)))
+        print("Bayar :",format_rupiah(hitung_bayar(total,member)))
+    except ValueError as e:
+        print("Input tidak valid:",e)
+
+if __name__ == "__main__": main()

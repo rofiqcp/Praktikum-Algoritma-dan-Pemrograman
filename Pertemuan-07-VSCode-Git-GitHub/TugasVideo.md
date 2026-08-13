@@ -1,3 +1,15 @@
-# Tugas Video Pertemuan 07
+# Tugas Video — Pertemuan 07
 
-Rekam VS Code + terminal: cek Python/Git, buat venv, jalankan program dan test, tunjukkan `git status/log`, commit bertahap, push/clone/pull, satu troubleshooting PATH/interpreter/dependency, dan jelaskan `.gitignore` serta larangan commit secret.
+Durasi rekomendasi 12–20 menit.
+
+## Demo Wajib
+- `python --version`, `git --version`, interpreter VS Code.
+- Buat/aktifkan `.venv`.
+- Jalankan program Python lokal.
+- Jalankan unit test.
+- Debug satu traceback.
+- Tunjukkan `git status`, `git add`, minimal 3 commit, remote, push, dan repo GitHub.
+- Jelaskan `.gitignore` dan larangan commit secret.
+
+## Rubrik
+Environment 15%, runnable program 20%, debugging/testing 20%, Git workflow 25%, security/docs 10%, penyampaian 10%.

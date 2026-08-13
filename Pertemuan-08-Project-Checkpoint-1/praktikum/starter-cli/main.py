@@ -1,25 +1,18 @@
-MENU={"nasi goreng":15000,"mie":12000,"teh":5000}
-keranjang=[]
-def tampilkan_menu():
-    for nama,harga in MENU.items(): print(f"- {nama}: Rp{harga:,.0f}")
-def tambah():
-    nama=input("Item: ").strip().lower()
-    if nama not in MENU: print("Tidak ditemukan"); return
-    try: jumlah=int(input("Jumlah: "))
-    except ValueError: print("Harus integer"); return
-    if jumlah<=0: print("Harus >0"); return
-    keranjang.append({"nama":nama,"jumlah":jumlah,"harga":MENU[nama]})
-def ringkasan():
-    total=0
-    for x in keranjang:
-        sub=x["jumlah"]*x["harga"]; total+=sub; print(x["nama"],x["jumlah"],sub)
-    print("TOTAL",total)
+from app import tambah_item,cari_item,hapus_item,statistik
+
 def main():
+    data=[]
     while True:
-        p=input("\n1 Menu 2 Tambah 3 Ringkasan 4 Keluar: ")
-        if p=="1": tampilkan_menu()
-        elif p=="2": tambah()
-        elif p=="3": ringkasan()
-        elif p=="4": break
-        else: print("Pilihan invalid")
-if __name__=="__main__": main()
+        print("\n1 Tambah  2 Lihat  3 Cari  4 Hapus  5 Statistik  0 Keluar")
+        p=input("Pilih: ").strip()
+        try:
+            if p=="1": print("Ditambah:",tambah_item(data,input("Nama: "),float(input("Nilai: "))))
+            elif p=="2": print(data if data else "Belum ada data")
+            elif p=="3": print(cari_item(data,input("Cari nama: ")) or "Tidak ditemukan")
+            elif p=="4": print("Terhapus" if hapus_item(data,input("Nama: ")) else "Tidak ditemukan")
+            elif p=="5": print(statistik(data))
+            elif p=="0": break
+            else: print("Pilihan tidak valid")
+        except ValueError as e: print("Error:",e)
+
+if __name__ == "__main__": main()

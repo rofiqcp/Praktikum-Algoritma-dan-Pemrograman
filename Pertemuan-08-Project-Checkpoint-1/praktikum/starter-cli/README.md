@@ -1,2 +1,8 @@
-# Starter CLI
-Jalankan `python main.py`. Ini hanya starter untuk menunjukkan menu, condition, loop, list/dictionary, function dan validasi. Kembangkan sesuai satu pilihan pada `Project.md`.
+# Starter CLI Checkpoint 1
+
+Contoh menu generic dengan list of dictionaries, function, validation, search, delete, statistik, dan unit test. **Wajib diadaptasi** sesuai project pilihan; jangan submit starter tanpa perubahan.
+
+```bash
+python main.py
+python -m unittest discover -s tests -v
+```

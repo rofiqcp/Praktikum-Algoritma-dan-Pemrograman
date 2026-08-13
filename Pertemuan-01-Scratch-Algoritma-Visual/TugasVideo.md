@@ -1,44 +1,47 @@
-# Tugas Video Pertemuan 01 — Scratch: Algoritma Visual dan Dasar Pemrograman
+# Tugas Video — Pertemuan 01: Scratch
 
-## Tujuan
+## Informasi Tugas
 
-Buat **video laporan praktikum**, bukan video membaca slide. Semua program wajib benar-benar dijalankan dan hasilnya harus terlihat.
+| Item | Ketentuan |
+|---|---|
+| Jenis | Video laporan praktikum |
+| Penilaian | Individu |
+| Durasi rekomendasi | 10–18 menit |
+| Resolusi minimum | 720p |
+| Bukti wajib | Screen recording Scratch berjalan + penjelasan + hasil pengujian |
 
-## Isi Wajib
+## Program/Bagian yang Wajib Didemokan
 
-1. **Pembukaan** — nama, NIM, pertemuan, target kompetensi.
-2. **Mental model** — jelaskan konsep utama dengan diagram/flow singkat.
-3. **Demo program** — jalankan seluruh contoh pada folder `praktikum/`.
-4. **Code walkthrough** — jelaskan bagian inti, input, proses, output, dan minimal satu keputusan teknis.
-5. **Modifikasi** — tunjukkan perubahan yang Anda buat sendiri.
-6. **Testing** — tampilkan minimal kasus normal, boundary, dan invalid/error.
-7. **Debugging** — tampilkan satu error nyata, bukti penyebab, lalu perbaikannya.
-8. **Penutup** — kesimpulan dan hal yang masih perlu dipelajari.
+- Sequence & event.
+- Variable & input.
+- Condition & loop.
+- Game Tangkap Koin lengkap.
+- Satu debug challenge.
 
-## Ketentuan
+## Struktur Video
 
-- Durasi disarankan 8–15 menit.
-- Screen recording wajib; wajah presenter mengikuti kebijakan pengajar.
-- Terminal/browser/output harus terbaca.
-- Jangan hanya menunjukkan source code tanpa menekan Run.
-- Secret/token harus disamarkan.
-- Cantumkan commit hash terakhir yang digunakan saat demo.
+1. **Pembukaan:** nama, NIM, tujuan praktikum.
+2. **Konsep inti:** input–process–output, sequence, event, condition, loop, variable.
+3. **Demo:** rakit/tunjukkan blok penting lalu jalankan Green Flag dan test input/aksi.
+4. **Debugging:** `gejala → bukti → hipotesis → perubahan → retest`.
+5. **Modifikasi mandiri:** satu fitur tambahan dan dua test case.
+6. **Penutup:** simpulkan hal yang dipelajari dan bukti program benar.
 
-## Rubrik 100 Poin
+## Rubrik
 
-| Aspek | Poin |
+| Komponen | Bobot |
 |---|---:|
-| Pemahaman konsep | 25 |
-| Program benar-benar berjalan | 30 |
-| Modifikasi dan kualitas kode | 15 |
-| Testing + debugging berbasis bukti | 20 |
-| Penyampaian dan dokumentasi | 10 |
+| Ketepatan konsep | 20% |
+| Semua bagian benar-benar dijalankan | 30% |
+| Pengujian expected-vs-actual | 15% |
+| Debugging berbasis bukti | 15% |
+| Modifikasi mandiri | 10% |
+| Kejelasan penyampaian | 10% |
 
 ## Checklist
 
-- [ ] Semua contoh wajib dijalankan.
-- [ ] Ada modifikasi sendiri.
-- [ ] Ada minimal 3 test case.
-- [ ] Ada satu debugging nyata.
-- [ ] Output dapat dibaca.
-- [ ] Tidak ada secret di layar/repo.
+- [ ] Stage dan blok terbaca.
+- [ ] Green Flag dan interaksi terlihat.
+- [ ] Minimal satu bug + retest ditampilkan.
+- [ ] Fitur mandiri ditampilkan.
+- [ ] Project yang didemokan sama dengan yang dikumpulkan.

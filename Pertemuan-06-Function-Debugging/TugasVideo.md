@@ -1,3 +1,12 @@
-# Tugas Video Pertemuan 06
+# Tugas Video — Pertemuan 06
 
-Wajib menunjukkan dekomposisi, My Blocks/function, parameter vs return, Run program modular, test fungsi, satu bug hunt dari bukti/tracing, satu refactor, dan kesimpulan kesiapan pindah ke VS Code.
+## Wajib Didemokan
+- My Blocks Scratch dan padanan function Python.
+- Parameter dan return.
+- Kalkulator modular.
+- Sistem nilai modular.
+- Menu modular.
+- Bug hunt + tracing + retest.
+- Hasil unit test.
+
+Durasi rekomendasi 12–20 menit. Rubrik: konsep 20%, demo 25%, modularitas 15%, testing 15%, debugging 15%, penyampaian 10%.

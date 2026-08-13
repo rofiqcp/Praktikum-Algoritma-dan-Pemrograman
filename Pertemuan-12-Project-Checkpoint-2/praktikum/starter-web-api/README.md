@@ -1,2 +1,10 @@
-# Starter Checkpoint 2
-Install requirements lalu `python app.py`. Ini starter, bukan jawaban project; kembangkan sesuai `Project.md`, deployment, docs endpoint, dan 10+ test case.
+# Starter Web/API Checkpoint 2
+
+## Run
+```bash
+python -m pip install -r requirements.txt
+python app.py
+python -m unittest -v test_app.py
+```
+
+Pages: `/`, `/plans`, `/external`. API: `/api/health`, `/api/plans`. External integration menggunakan file mock agar penilaian deterministik; project pilihan boleh memakai API publik sesuai ketentuan buku dan harus menangani timeout/failure.

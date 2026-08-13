@@ -1,0 +1,1 @@
+body{font-family:system-ui,sans-serif;max-width:1050px;margin:auto;padding:24px;line-height:1.5}section,form{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}input,select,button{padding:9px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #ddd;padding:8px;text-align:left}#state,#message{min-height:1.5em}

@@ -1,0 +1,2 @@
+# Program utama hanya memakai standard library.
+# Tambahkan dependency dengan: python -m pip install <package>

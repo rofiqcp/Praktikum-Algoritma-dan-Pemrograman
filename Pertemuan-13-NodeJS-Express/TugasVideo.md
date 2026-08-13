@@ -1,3 +1,13 @@
-# Tugas Video Pertemuan 13
+# Tugas Video — Pertemuan 13
 
-Demo `node/npm`, `npm install`, `npm start`, Express route, static file, middleware/fetch frontend, Network tab, modifikasi route sendiri, dan satu troubleshooting. Semua output server/browser wajib terlihat.
+## Wajib Didemokan
+- `node --version`, `npm --version`, dan `package.json`.
+- `npm install`, `npm start`.
+- Static page Express.
+- GET/POST endpoint JSON.
+- Middleware logger.
+- Browser `fetch` dengan loading/error/success.
+- `npm test`.
+- Satu error `Cannot find module`/port/body dan troubleshooting.
+
+Durasi rekomendasi 12–20 menit.

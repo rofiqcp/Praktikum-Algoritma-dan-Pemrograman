@@ -1,1 +1,1 @@
-{"name":"pertemuan-14-frontend","version":"1.0.0","private":true,"scripts":{"start":"node server.js"},"dependencies":{"express":"^5.1.0"}}
+{"name":"p14-node-frontend","version":"1.0.0","private":true,"scripts":{"start":"node server.js"},"engines":{"node":">=18"},"dependencies":{"express":">=4 <6"}}

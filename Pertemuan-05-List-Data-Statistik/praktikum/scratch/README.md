@@ -1,2 +1,5 @@
-# Versi Scratch
-Buat List `Nilai`; repeat input; `add (answer) to [Nilai]`; lakukan loop untuk total dan hitung rata-rata. Tambahkan pencarian apakah nilai tertentu ada dan bandingkan mental model dengan Python list.
+# Padanan Scratch — List
+
+Buat List `Nilai`: `delete all`, lalu berulang `ask` → `add answer to Nilai`. Gunakan `length of Nilai` dan loop index untuk menghitung `total`. Hitung rata-rata hanya bila panjang list > 0.
+
+Untuk pencarian, gunakan `item # of ... in ...` atau loop manual. Bandingkan konsep ini dengan Python `list`, `in`, `len`, dan indexing.

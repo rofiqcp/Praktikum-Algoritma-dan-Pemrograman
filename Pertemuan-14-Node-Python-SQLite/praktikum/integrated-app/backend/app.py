@@ -1,32 +1,58 @@
 import sqlite3
-from pathlib import Path
 from flask import Flask,jsonify,request
-DB_PATH=Path(__file__).with_name('app.db'); app=Flask(__name__)
-@app.after_request
-def cors(r):
-    r.headers['Access-Control-Allow-Origin']='http://localhost:3000'; r.headers['Access-Control-Allow-Headers']='Content-Type'; r.headers['Access-Control-Allow-Methods']='GET,POST,PATCH,DELETE,OPTIONS'; return r
-def db():
-    c=sqlite3.connect(DB_PATH); c.row_factory=sqlite3.Row; return c
-def init_db():
-    with db() as c: c.execute('CREATE TABLE IF NOT EXISTS tasks(id INTEGER PRIMARY KEY AUTOINCREMENT,title TEXT NOT NULL,done INTEGER NOT NULL DEFAULT 0 CHECK(done IN(0,1)))'); c.commit()
-@app.get('/api/tasks')
-def list_tasks():
-    with db() as c: rows=c.execute('SELECT id,title,done FROM tasks ORDER BY id').fetchall()
-    return jsonify({'data':[dict(x) for x in rows]})
-@app.post('/api/tasks')
+from flask_cors import CORS
+from db import connect,init_db,rows,row
+
+app=Flask(__name__); CORS(app,resources={r"/api/*":{"origins":["http://127.0.0.1:3000","http://localhost:3000"]}}); init_db()
+
+def err(code,msg,status,details=None):
+    body={"error":{"code":code,"message":msg}}
+    if details: body["error"]["details"]=details
+    return jsonify(body),status
+
+def validate(p,partial=False):
+    e={}
+    if not partial or "name" in p:
+        if not str(p.get("name","")).strip(): e["name"]="wajib diisi"
+    for key,cast in [("price",float),("stock",int)]:
+        if key in p:
+            try:
+                if cast(p[key])<0: raise ValueError
+            except (ValueError,TypeError): e[key]="harus >= 0"
+    return e
+
+@app.get("/api/health")
+def health(): return jsonify({"status":"ok"})
+@app.get("/api/products")
+def list_products(): return jsonify({"data":rows("SELECT id,name,price,stock FROM products ORDER BY id")})
+@app.get("/api/products/<int:pid>")
+def detail(pid):
+    p=row("SELECT id,name,price,stock FROM products WHERE id=?",(pid,)); return jsonify(p) if p else err("NOT_FOUND","Produk tidak ditemukan",404)
+@app.post("/api/products")
 def create():
-    b=request.get_json(silent=True) or {}; title=str(b.get('title','')).strip()
-    if not title: return jsonify({'error':'title wajib'}),400
-    with db() as c: cur=c.execute('INSERT INTO tasks(title) VALUES(?)',(title,)); c.commit(); i=cur.lastrowid
-    return jsonify({'id':i,'title':title,'done':0}),201
-@app.patch('/api/tasks/<int:i>')
-def patch(i):
-    b=request.get_json(silent=True) or {}
-    if not isinstance(b.get('done'),bool): return jsonify({'error':'done harus boolean'}),400
-    with db() as c: cur=c.execute('UPDATE tasks SET done=? WHERE id=?',(int(b['done']),i)); c.commit()
-    return (jsonify({'id':i,'done':int(b['done'])}),200) if cur.rowcount else (jsonify({'error':'not_found'}),404)
-@app.delete('/api/tasks/<int:i>')
-def delete(i):
-    with db() as c: cur=c.execute('DELETE FROM tasks WHERE id=?',(i,)); c.commit()
-    return ('',204) if cur.rowcount else (jsonify({'error':'not_found'}),404)
-if __name__=='__main__': init_db(); app.run(port=5000,debug=True)
+    p=request.get_json(silent=True) or {}; e=validate(p)
+    if e:return err("VALIDATION_ERROR","Payload tidak valid",400,e)
+    try:
+        with connect() as c:
+            cur=c.execute("INSERT INTO products(name,price,stock) VALUES(?,?,?)",(p["name"].strip(),float(p.get("price",0)),int(p.get("stock",0))))
+            pid=cur.lastrowid
+    except sqlite3.IntegrityError:return err("CONFLICT","Nama duplikat atau constraint gagal",409)
+    return jsonify(row("SELECT * FROM products WHERE id=?",(pid,))),201
+@app.patch("/api/products/<int:pid>")
+def update(pid):
+    current=row("SELECT * FROM products WHERE id=?",(pid,))
+    if not current:return err("NOT_FOUND","Produk tidak ditemukan",404)
+    p=request.get_json(silent=True) or {}; e=validate(p,True)
+    if e:return err("VALIDATION_ERROR","Payload tidak valid",400,e)
+    name=str(p.get("name",current["name"])).strip(); price=float(p.get("price",current["price"])); stock=int(p.get("stock",current["stock"]))
+    try:
+        with connect() as c:c.execute("UPDATE products SET name=?,price=?,stock=? WHERE id=?",(name,price,stock,pid))
+    except sqlite3.IntegrityError:return err("CONFLICT","Constraint database gagal",409)
+    return jsonify(row("SELECT * FROM products WHERE id=?",(pid,)))
+@app.delete("/api/products/<int:pid>")
+def delete(pid):
+    if not row("SELECT id FROM products WHERE id=?",(pid,)):return err("NOT_FOUND","Produk tidak ditemukan",404)
+    with connect() as c:c.execute("DELETE FROM products WHERE id=?",(pid,))
+    return "",204
+
+if __name__=="__main__": app.run(port=5001,debug=True)

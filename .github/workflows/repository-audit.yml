@@ -1,0 +1,19 @@
+name: Repository Audit
+on:
+  push:
+    branches: [v1]
+  pull_request:
+    branches: [v1]
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate structure and syntax
+        run: python scripts/audit_repo.py

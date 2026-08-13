@@ -1,3 +1,14 @@
-# Tugas Video Pertemuan 09
+# Tugas Video — Pertemuan 09
 
-Demo arsitektur browser↔Flask, 3 halaman, template/static, form GET/POST dan validation, state UI success/error, test mobile/desktop sederhana, serta debugging 404/500/template. Wajib benar-benar menjalankan browser dan terminal.
+Durasi rekomendasi 12–20 menit.
+
+## Wajib
+- Jelaskan browser → HTTP → Flask route → response/template.
+- Jalankan server lokal dan tunjukkan minimal 3 halaman.
+- Tunjukkan template inheritance dan static asset.
+- Submit form valid dan invalid.
+- Tunjukkan 404 serta satu 500/TemplateNotFound pada salinan latihan, baca traceback, lalu retest.
+- Jalankan unit test.
+- Demo satu modifikasi UI/fitur mandiri.
+
+Rubrik: mental model 15%, runnable web 25%, UI/template/form 20%, validation/testing 20%, debugging 10%, penyampaian 10%.

@@ -1,6 +1,9 @@
-# Run
+# Node Express Praktikum
+
 ```bash
 npm install
 npm start
+npm test
 ```
-Buka http://localhost:3000 dan uji `/api/hello`.
+
+Static frontend memanggil API yang sama origin, sehingga belum memerlukan CORS. `app.js` mengekspor Express app agar dapat diuji tanpa membuka port.

@@ -1,46 +1,47 @@
-# Jobsheet Pertemuan 02 — Scratch + Python Colab I: Sequence, Input, Output, dan Variabel
+# Jobsheet Pertemuan 02 — Sequence, Input, Output, dan Variabel
 
-## Tujuan Praktikum
+## Environment
+**Scratch + Google Colab + Python**
 
-1. Membuat notebook Google Colab dan menjalankan cell secara benar.
-2. Menerjemahkan blok Scratch say/set/ask/operator menjadi print/variable/input/operator Python.
-3. Menggunakan string, integer, float, boolean, dan konversi tipe data.
-
-## Prinsip Kerja
-
-Kerjakan berurutan: **prediksi → jalankan → amati → ubah → uji ulang → dokumentasikan**.
-
-## Persiapan
-
-Buka Scratch untuk versi visual. Untuk versi Python, buka Google Colab dan unggah notebook `.ipynb` pada folder `praktikum/`, atau jalankan file `.py` yang setara.
+## Pola Kerja
+```text
+PREDIKSI → JALANKAN → AMATI → CATAT → UBAH SATU HAL → UJI ULANG → SIMPULKAN
+```
 
 ## Percobaan Wajib
 
-1. Jalankan contoh utama Pertemuan 2.
-2. Prediksi output sebelum Run.
-3. Ubah minimal dua input/aturan.
-4. Buat tabel test case dan lakukan bug hunt.
+| No | Percobaan | Aktivitas |
+|---:|---|---|
+| 1 | Biodata Interaktif | Input nama, umur, kota; output rapi |
+| 2 | Kalkulator Belanja | Harga × jumlah |
+| 3 | Konversi Menit | `//` dan `%` |
+| 4 | Konversi Suhu | Celsius → Fahrenheit/Kelvin |
+| 5 | Estimasi Perjalanan | Jarak, konsumsi BBM, harga BBM |
 
-## Bukti yang Dikumpulkan
+## Urutan Menjalankan
+1. Rakit versi Scratch pada `praktikum/scratch/README.md`.
+2. Jalankan semua file `praktikum/python/*.py`.
+3. Buka `praktikum/colab/latihan_pertemuan02.ipynb` di Google Colab dan Run all.
+4. Ubah minimal satu input normal, satu boundary, dan satu input salah.
 
-- Screenshot/rekaman program berhasil dijalankan.
-- Source code hasil perubahan sendiri.
-- Tabel test case berisi input, expected, actual, status.
-- Minimal tiga temuan debugging: gejala, penyebab, perbaikan.
-- Kesimpulan yang menjelaskan alur program, bukan hanya hasil akhir.
+## Test Wajib
 
-## Aturan Pengujian
+| Kasus | Expected | Actual | Pass |
+|---|---|---|:---:|
+| integer valid |  |  | ☐ |
+| float valid |  |  | ☐ |
+| nilai 0 |  |  | ☐ |
+| nilai desimal |  |  | ☐ |
+| input non-angka (`ValueError`) |  |  | ☐ |
 
-Setiap program minimal diuji dengan:
-1. kasus normal;
-2. nilai batas;
-3. input salah/tidak valid;
-4. satu perubahan fitur yang dibuat mahasiswa.
+## Pertanyaan Analisis
+1. Apa padanan `ask` Scratch di Python?
+2. Mengapa hasil `input()` sering perlu dikonversi?
+3. Kapan memakai `int` dan `float`?
+4. Apa beda `/`, `//`, `%`?
 
-## Checklist Selesai
+## Log Debugging
+Catat minimal tiga: gejala, error/bukti, hipotesis, perubahan, retest.
 
-- [ ] Saya dapat menjelaskan alur program tanpa membaca seluruh kode.
-- [ ] Saya menjalankan semua program pada folder `praktikum/`.
-- [ ] Saya melakukan perubahan sendiri dan menguji ulang.
-- [ ] Saya menyimpan bukti error dan perbaikannya.
-- [ ] Saya tidak memasukkan password/token/API key ke repository.
+## Bukti
+Screenshot/run output, source perubahan sendiri, test expected-vs-actual, debugging log, dan kesimpulan.

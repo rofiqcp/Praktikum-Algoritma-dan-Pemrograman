@@ -1,3 +1,14 @@
-# Tugas Video Pertemuan 04
+# Tugas Video — Pertemuan 04
 
-Tunjukkan Run Scratch dan Python/Colab, tracing minimal tiga iterasi, satu contoh `for`, satu `while`, satu bug infinite/off-by-one, test normal/boundary/invalid, modifikasi sendiri, dan kesimpulan. Jangan hanya membaca source.
+Durasi rekomendasi 10–18 menit, individu, minimal 720p.
+
+## Wajib Didemokan
+- `for` tabungan harian dan tracing accumulator.
+- `range` bilangan genap.
+- `while` tebak angka.
+- Kasir sentinel.
+- Nested loop pola bintang.
+- Satu bug infinite-loop/off-by-one dan retest.
+
+## Rubrik
+Konsep 20%, demo runnable 30%, tracing/testing 15%, debugging 15%, modifikasi 10%, penyampaian 10%.

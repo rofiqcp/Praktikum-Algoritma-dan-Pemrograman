@@ -1,2 +1,12 @@
-# Versi Scratch
-Buat variable `hari`, `setoran`, `saldo`, `i`. Ask jumlah hari dan setoran; set saldo=0; `repeat (hari)` → `change saldo by setoran`, `change i by 1`, `say saldo`. Bandingkan dengan `for range()` Python.
+# Padanan Scratch — Loop
+
+## Tabungan
+Variable `saldo`, `hari`, `setoran`, `i`. Set `saldo=0`, lalu `repeat (hari)` → `change saldo by setoran` → tampilkan saldo.
+
+## Tebak angka
+Gunakan `repeat until <(jawaban)=(rahasia)>`, `ask`, dan counter percobaan.
+
+## Kasir sentinel
+Gunakan `repeat until <(harga)=(0)>`; accumulator `total` tidak boleh di-reset di dalam loop.
+
+Bandingkan `repeat ↔ for`, `repeat until ↔ while not`, `forever ↔ while True`.

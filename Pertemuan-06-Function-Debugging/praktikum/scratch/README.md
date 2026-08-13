@@ -1,2 +1,11 @@
-# Versi Scratch
-Buat My Blocks seperti `hitung total (harga) (jumlah)` dan `tampilkan laporan`. Jelaskan input parameter dan nilai/state yang dihasilkan. Pecah script panjang menjadi blok dengan satu tanggung jawab.
+# My Blocks Scratch — Pertemuan 06
+
+Buat custom block dengan nama bermakna, misalnya:
+
+```text
+define tampilkanTotal (harga) (jumlah)
+set [total] to ((harga)*(jumlah))
+say (join [Total: ] (total))
+```
+
+Pecah program nilai menjadi My Blocks: `bacaData`, `validasiNilai`, `tentukanGrade`, `tampilkanHasil`. Bandingkan dengan function Python.

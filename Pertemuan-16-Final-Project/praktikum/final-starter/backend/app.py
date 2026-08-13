@@ -1,41 +1,71 @@
-import sqlite3
-from pathlib import Path
+import sqlite3,os
 from flask import Flask,jsonify,request
-DB=Path(__file__).with_name('final.db');app=Flask(__name__)
-def connect():
-    c=sqlite3.connect(DB);c.row_factory=sqlite3.Row;c.execute('PRAGMA foreign_keys=ON');return c
-def init_db():
-    with connect() as c:
-        c.executescript('CREATE TABLE IF NOT EXISTS categories(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT NOT NULL UNIQUE);CREATE TABLE IF NOT EXISTS products(id INTEGER PRIMARY KEY AUTOINCREMENT,category_id INTEGER NOT NULL,name TEXT NOT NULL,stock INTEGER NOT NULL CHECK(stock>=0),FOREIGN KEY(category_id) REFERENCES categories(id) ON DELETE RESTRICT);')
-        c.execute("INSERT OR IGNORE INTO categories(id,name) VALUES(1,'Default')");c.commit()
-@app.after_request
-def cors(r):r.headers['Access-Control-Allow-Origin']='http://localhost:3000';r.headers['Access-Control-Allow-Headers']='Content-Type';r.headers['Access-Control-Allow-Methods']='GET,POST,PATCH,DELETE,OPTIONS';return r
-@app.get('/health')
+from flask_cors import CORS
+from db import connect,init_db,all_rows,one
+
+app=Flask(__name__); CORS(app,resources={r"/api/*":{"origins":["http://127.0.0.1:3000","http://localhost:3000"]}}); init_db()
+
+def err(code,msg,status,details=None):
+    b={"error":{"code":code,"message":msg}}
+    if details:b["error"]["details"]=details
+    return jsonify(b),status
+
+def validate(p,partial=False):
+    e={}
+    if not partial or 'name' in p:
+        if not str(p.get('name','')).strip():e['name']='wajib diisi'
+    if not partial or 'category_id' in p:
+        try:
+            if int(p.get('category_id',0))<=0:raise ValueError
+        except (TypeError,ValueError):e['category_id']='harus integer > 0'
+    for k,cast in [('price',float),('stock',int)]:
+        if not partial or k in p:
+            try:
+                if cast(p.get(k,0))<0:raise ValueError
+            except (TypeError,ValueError):e[k]='harus >= 0'
+    return e
+
+def category_exists(cid):return one('SELECT id FROM categories WHERE id=?',(cid,)) is not None
+def get(pid):return one('''SELECT p.id,p.name,p.price,p.stock,p.category_id,c.name category_name FROM products p JOIN categories c ON c.id=p.category_id WHERE p.id=?''',(pid,))
+
+@app.get('/api/health')
 def health():return jsonify({'status':'ok'})
 @app.get('/api/categories')
-def categories():
-    with connect() as c:rows=c.execute('SELECT id,name FROM categories ORDER BY name').fetchall()
-    return jsonify({'data':[dict(x) for x in rows]})
+def categories():return jsonify({'data':all_rows('SELECT id,name FROM categories ORDER BY name')})
 @app.get('/api/products')
 def products():
-    with connect() as c:rows=c.execute('SELECT p.id,p.name,p.stock,p.category_id,c.name category_name FROM products p JOIN categories c ON c.id=p.category_id ORDER BY p.id').fetchall()
-    return jsonify({'data':[dict(x) for x in rows]})
+    q=request.args.get('q','');cid=request.args.get('category_id',type=int);sql='''SELECT p.id,p.name,p.price,p.stock,p.category_id,c.name category_name FROM products p JOIN categories c ON c.id=p.category_id WHERE p.name LIKE ?''';args=[f'%{q}%']
+    if cid is not None:sql+=' AND p.category_id=?';args.append(cid)
+    sql+=' ORDER BY p.name';return jsonify({'data':all_rows(sql,args)})
+@app.get('/api/products/<int:pid>')
+def detail(pid):
+    p=get(pid);return jsonify(p) if p else err('NOT_FOUND','Produk tidak ditemukan',404)
 @app.post('/api/products')
 def create():
-    b=request.get_json(silent=True) or {};name=str(b.get('name','')).strip();cid=b.get('category_id');stock=b.get('stock')
-    if not name or not isinstance(cid,int) or not isinstance(stock,int) or stock<0:return jsonify({'error':{'code':'INVALID_INPUT','message':'name/category_id/stock invalid'}}),400
+    p=request.get_json(silent=True) or {};e=validate(p)
+    if e:return err('VALIDATION_ERROR','Payload tidak valid',400,e)
+    cid=int(p['category_id'])
+    if not category_exists(cid):return err('INVALID_CATEGORY','Kategori tidak ditemukan',400,{'category_id':'not found'})
     try:
-        with connect() as c:cur=c.execute('INSERT INTO products(category_id,name,stock) VALUES(?,?,?)',(cid,name,stock));c.commit();i=cur.lastrowid
-    except sqlite3.IntegrityError:return jsonify({'error':{'code':'INVALID_CATEGORY','message':'kategori tidak tersedia'}}),409
-    return jsonify({'id':i,'name':name,'category_id':cid,'stock':stock}),201
-@app.patch('/api/products/<int:i>')
-def patch(i):
-    b=request.get_json(silent=True) or {};stock=b.get('stock')
-    if not isinstance(stock,int) or stock<0:return jsonify({'error':{'code':'INVALID_STOCK','message':'stock harus integer >=0'}}),400
-    with connect() as c:cur=c.execute('UPDATE products SET stock=? WHERE id=?',(stock,i));c.commit()
-    return (jsonify({'id':i,'stock':stock}),200) if cur.rowcount else (jsonify({'error':{'code':'NOT_FOUND'}}),404)
-@app.delete('/api/products/<int:i>')
-def delete(i):
-    with connect() as c:cur=c.execute('DELETE FROM products WHERE id=?',(i,));c.commit()
-    return ('',204) if cur.rowcount else (jsonify({'error':{'code':'NOT_FOUND'}}),404)
-if __name__=='__main__':init_db();app.run(port=5000,debug=True)
+        with connect() as c:cur=c.execute('INSERT INTO products(category_id,name,price,stock) VALUES(?,?,?,?)',(cid,p['name'].strip(),float(p.get('price',0)),int(p.get('stock',0))));pid=cur.lastrowid
+    except sqlite3.IntegrityError:return err('CONFLICT','Nama produk sudah ada/constraint gagal',409)
+    return jsonify(get(pid)),201
+@app.patch('/api/products/<int:pid>')
+def patch(pid):
+    current=get(pid)
+    if not current:return err('NOT_FOUND','Produk tidak ditemukan',404)
+    p=request.get_json(silent=True) or {};e=validate(p,True)
+    if e:return err('VALIDATION_ERROR','Payload tidak valid',400,e)
+    data={**current,**p};cid=int(data['category_id'])
+    if not category_exists(cid):return err('INVALID_CATEGORY','Kategori tidak ditemukan',400)
+    try:
+        with connect() as c:c.execute('UPDATE products SET category_id=?,name=?,price=?,stock=? WHERE id=?',(cid,str(data['name']).strip(),float(data['price']),int(data['stock']),pid))
+    except sqlite3.IntegrityError:return err('CONFLICT','Constraint gagal',409)
+    return jsonify(get(pid))
+@app.delete('/api/products/<int:pid>')
+def delete(pid):
+    if not get(pid):return err('NOT_FOUND','Produk tidak ditemukan',404)
+    with connect() as c:c.execute('DELETE FROM products WHERE id=?',(pid,))
+    return '',204
+
+if __name__=='__main__':app.run(host='0.0.0.0',port=int(os.getenv('API_PORT','5001')),debug=os.getenv('FLASK_DEBUG')=='1')

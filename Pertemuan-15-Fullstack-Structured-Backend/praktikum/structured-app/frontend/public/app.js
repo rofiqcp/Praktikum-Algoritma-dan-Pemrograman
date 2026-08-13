@@ -1,0 +1,5 @@
+const API='http://127.0.0.1:5001/api',state=document.querySelector('#state'),rows=document.querySelector('#rows'),cat=document.querySelector('#category');
+async function call(path){const r=await fetch(API+path);const d=await r.json();if(!r.ok)throw new Error(d?.error?.message||`HTTP ${r.status}`);return d;}
+async function loadCategories(){const d=await call('/categories');cat.innerHTML='<option value="">Semua kategori</option>'+d.data.map(x=>`<option value="${x.id}">${x.name}</option>`).join('');}
+async function load(){state.textContent='Loading...';try{const q=encodeURIComponent(document.querySelector('#q').value);const cid=cat.value;const d=await call(`/products?q=${q}${cid?`&category_id=${cid}`:''}`);rows.innerHTML=d.data.length?d.data.map(p=>`<tr><td>${p.name}</td><td>${p.category_name}</td><td>${p.price}</td><td>${p.stock}</td></tr>`).join(''):'<tr><td colspan="4">Empty state</td></tr>';state.textContent=`${d.data.length} data`; }catch(e){state.textContent=`Error: ${e.message}`;}}
+document.querySelector('#search').onclick=load;(async()=>{try{await loadCategories();await load();}catch(e){state.textContent=e.message;}})();
