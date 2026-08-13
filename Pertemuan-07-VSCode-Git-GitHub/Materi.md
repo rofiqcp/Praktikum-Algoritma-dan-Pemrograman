@@ -1,41 +1,24 @@
-# Materi Pertemuan 07 — Instalasi VS Code, Python, Git, dan GitHub
+# Materi Pertemuan 07 — VS Code, Python Lokal, Git, dan GitHub
 
-> Sumber utama: *Buku Panduan Praktik: Pemrograman Dasar hingga Full Stack — 16 Pertemuan Terstruktur, Edisi Agustus 2026*. Contoh runnable ada di `praktikum/`.
+Pertemuan ini memindahkan workflow dari browser ke komputer lokal. Mahasiswa harus memahami perbedaan editor, interpreter, terminal, repository Git, dan remote GitHub.
 
-Peserta berpindah dari notebook browser ke workflow developer lokal. Fokus bukan hanya instalasi, tetapi memahami hubungan editor, interpreter, terminal, repository, dan remote GitHub.
+## Target
+- Menjalankan `.py` dari terminal dan VS Code.
+- Membuat `.venv`.
+- Menggunakan `git init/status/add/commit`.
+- Menghubungkan repository ke GitHub dan melakukan push/pull/clone.
+- Membaca status repository dan menggunakan `.gitignore`.
 
-## Target Kompetensi
-- Membedakan VS Code, Python interpreter, dan extension Python.
-- Menjalankan file `.py` dari VS Code dan terminal.
-- Membuat virtual environment.
-- Melakukan Git `init/add/commit/push/pull/clone`.
-- Membaca status repository dan menghindari commit secret.
+## Mental model
+```text
+VS Code = editor
+Python = interpreter
+Terminal = tempat menjalankan perintah
+Git = version control lokal
+GitHub = remote repository
+```
 
-## Output Pertemuan
-- Folder project Python lokal.
-- Repository GitHub berisi program uji, README, dan `.gitignore`.
-- Minimal tiga commit yang bermakna.
-
-## Alur Pengajaran 180 Menit
-| Tahap | Durasi | Aktivitas |
-|---|---:|---|
-| Konsep environment | 20 | Editor vs interpreter vs terminal |
-| Instalasi | 35 | Python, VS Code, Python extension, Git |
-| Project lokal | 25 | Folder, `.py`, terminal |
-| venv/pip | 25 | Virtual environment dan package |
-| Git lokal | 30 | init, status, add, commit |
-| GitHub | 30 | remote, push, pull, clone |
-| Troubleshoot | 15 | PATH, interpreter, auth GitHub |
-
-## 7.1 Empat Komponen yang Sering Tertukar
-| Komponen | Peran | Bukan |
-|---|---|---|
-| VS Code | Editor/IDE ringan | Bahasa Python |
-| Python interpreter | Mengeksekusi kode Python | Editor |
-| Extension Python | Fitur Python di VS Code | Pengganti interpreter |
-| Terminal | Menjalankan perintah | GitHub |
-
-## 7.2 Struktur Project Lokal
+## Struktur project
 ```text
 belajar-python/
 ├── main.py
@@ -45,20 +28,13 @@ belajar-python/
 └── .gitignore
 ```
 
-## 7.3 Virtual Environment
+## Virtual environment
 ```bash
 python -m venv .venv
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
-# macOS/Linux
-source .venv/bin/activate
-python -m pip install requests
-python -m pip freeze > requirements.txt
 ```
+Windows PowerShell: `.venv\Scripts\Activate.ps1`. macOS/Linux: `source .venv/bin/activate`.
 
-Gunakan `python -m pip ...` agar `pip` mengikuti interpreter yang sedang aktif.
-
-## 7.4 Git Workflow Minimum
+## Git workflow
 ```bash
 git init
 git status
@@ -69,10 +45,10 @@ git branch -M main
 git push -u origin main
 ```
 
-Commit harus menjawab “perubahan apa yang baru saja stabil?”. Hindari satu commit raksasa di akhir. Contoh: `feat: tambah validasi nilai`, `fix: cegah pembagian nol`, `docs: tambah cara menjalankan program`.
+Commit harus mewakili perubahan stabil dan bermakna, bukan satu commit raksasa di akhir.
 
-## 7.5 `.gitignore` Minimum
-```gitignore
+## `.gitignore`
+```text
 .venv/
 __pycache__/
 .env
@@ -80,21 +56,11 @@ __pycache__/
 .vscode/
 ```
 
-## 7.6 Tes Program
-```python
-def hitung_diskon(total, member):
-    if member and total >= 100_000:
-        return total * 0.10
-    return 0
-```
-Program runnable dan test ada di `praktikum/python-local/`.
+## Troubleshooting minimum
+- `python` tidak dikenali: cek instalasi/PATH dan interpreter VS Code.
+- `ModuleNotFoundError`: pastikan environment yang benar aktif.
+- `git` tidak dikenali: cek instalasi dan restart terminal.
+- push ditolak: cek remote, branch, dan sinkronisasi remote.
 
-## 7.7 Troubleshooting Instalasi
-| Gejala | Kemungkinan penyebab | Pemeriksaan |
-|---|---|---|
-| `python` tidak dikenali | PATH/alias | `python --version`, `py --version`, pilih interpreter VS Code |
-| `ModuleNotFoundError` | Package di interpreter berbeda | aktifkan venv; `python -m pip show ...` |
-| VS Code pakai Python salah | Workspace interpreter belum dipilih | Python: Select Interpreter |
-| `git` tidak dikenali | Git belum install/PATH belum reload | restart terminal; `git --version` |
-| Push ditolak | Remote/branch/auth | `git remote -v`, `git branch`, pull jika perlu |
-| Secret terlanjur commit | `.env` tidak di-ignore | rotasi secret segera; bersihkan history sesuai prosedur |
+## Output
+Folder Python lokal, repository GitHub, README, `.gitignore`, dan minimal tiga commit bermakna.
