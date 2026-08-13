@@ -1,17 +1,25 @@
-# Dokumentasi Endpoint
+# API Pertemuan 10
 
-Base URL lokal: `http://127.0.0.1:5000/api`
+Base URL lokal: `http://127.0.0.1:5000/api`.
 
-| Method | Path | Sukses | Error utama |
-|---|---|---:|---|
-| GET | `/health` | 200 | - |
-| GET | `/products` | 200 | - |
-| GET | `/products/<id>` | 200 | 404 |
-| POST | `/products` | 201 | 400,409 |
-| PATCH | `/products/<id>` | 200 | 400,404 |
-| DELETE | `/products/<id>` | 204 | 404 |
+| Method | Path | Tujuan |
+|---|---|---|
+| GET | `/health` | Status service |
+| GET | `/products` | Daftar data |
+| GET | `/products?q=key` | Pencarian nama |
+| GET | `/products/<id>` | Detail data |
+| POST | `/products` | Menambah data |
+| PATCH | `/products/<id>` | Memperbarui sebagian data |
+| DELETE | `/products/<id>` | Mengeluarkan data dari collection |
 
-## Error Contract
+Contoh POST:
 ```json
-{"error":{"code":"VALIDATION_ERROR","message":"Payload tidak valid","details":{"stock":"harus integer >= 0"}}}
+{"name":"Monitor","price":1500000,"stock":3}
 ```
+
+Contoh PATCH:
+```json
+{"stock":0}
+```
+
+Response error menggunakan object `error` yang berisi `code`, `message`, dan `details` bila diperlukan. Uji status 200, 201, 204, 400, 404, 405, dan 409 sesuai skenario pada Jobsheet.
