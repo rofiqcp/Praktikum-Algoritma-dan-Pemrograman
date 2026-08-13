@@ -1,7 +1,31 @@
 import tempfile
 from pathlib import Path
-import app as m
-t=tempfile.TemporaryDirectory();m.DB=Path(t.name)/'test.db';m.init_db();c=m.app.test_client();assert c.get('/health').status_code==200
-r=c.post('/api/products',json={'name':'Keyboard','category_id':1,'stock':5});assert r.status_code==201,r.get_json();i=r.get_json()['id']
-assert c.get('/api/products').get_json()['data'][0]['name']=='Keyboard';assert c.patch(f'/api/products/{i}',json={'stock':9}).status_code==200;assert c.delete(f'/api/products/{i}').status_code==204;assert c.post('/api/products',json={'name':'','category_id':1,'stock':-1}).status_code==400
-print('Final starter API tests lulus')
+import db
+import app as module
+
+with tempfile.TemporaryDirectory() as tmp:
+    db.DB = Path(tmp) / 'test.db'
+    db.init_db()
+    module.app.config['TESTING'] = True
+    client = module.app.test_client()
+
+    assert client.get('/api/health').status_code == 200
+    assert client.get('/api/categories').status_code == 200
+
+    response = client.post('/api/products', json={
+        'name': 'Starter Test Product',
+        'category_id': 1,
+        'price': 1000,
+        'stock': 5,
+    })
+    assert response.status_code == 201, response.get_json()
+    product_id = response.get_json()['id']
+
+    assert client.get('/api/products?q=Starter').status_code == 200
+    assert client.get(f'/api/products/{product_id}').status_code == 200
+    assert client.patch(f'/api/products/{product_id}', json={'stock': 9}).status_code == 200
+    assert client.post('/api/products', json={'name': '', 'category_id': 1, 'stock': -1}).status_code == 400
+    assert client.delete(f'/api/products/{product_id}').status_code == 204
+    assert client.get(f'/api/products/{product_id}').status_code == 404
+
+print('Final starter API smoke test: PASS')
