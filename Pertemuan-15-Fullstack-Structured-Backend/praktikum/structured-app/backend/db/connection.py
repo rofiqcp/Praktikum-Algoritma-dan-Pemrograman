@@ -1,9 +1,12 @@
+import os
 import sqlite3
 from pathlib import Path
-DB=Path(__file__).resolve().parents[1]/"app.db"
+
+DEFAULT_DB=Path(__file__).resolve().parents[1]/"app.db"
+DB=Path(os.getenv("DATABASE_PATH",str(DEFAULT_DB)))
 
 def connect():
-    c=sqlite3.connect(DB); c.row_factory=sqlite3.Row; c.execute("PRAGMA foreign_keys=ON"); return c
+    c=sqlite3.connect(DB);c.row_factory=sqlite3.Row;c.execute("PRAGMA foreign_keys=ON");return c
 
 def init_db():
     with connect() as c:
