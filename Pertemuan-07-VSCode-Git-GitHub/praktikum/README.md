@@ -1,20 +1,3 @@
 # Praktikum Pertemuan 07
 
-```bash
-cd python-local
-python -m venv .venv
-# aktifkan sesuai OS
-python main.py
-python -m unittest discover -s tests -v
-```
-
-Setelah program stabil:
-```bash
-git init
-git add .
-git commit -m "feat: tambah kalkulator diskon"
-git commit -m "test: tambah boundary diskon"
-git commit -m "docs: tambah petunjuk menjalankan"
-```
-
-Jangan commit `.venv/`, `.env`, cache, atau credential.
+Masuk ke `python-local/`, buat `.venv`, pilih interpreter VS Code, jalankan `main.py`, lalu jalankan test. Setelah program stabil, latihan Git dilakukan bertahap dengan status, add, commit, log, remote, push, pull, dan clone. Bukti minimum: versi Python/Git, interpreter, hasil program/test, Git history, dan repository GitHub.
