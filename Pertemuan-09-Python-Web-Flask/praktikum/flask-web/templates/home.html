@@ -1,1 +1,36 @@
-{% extends 'base.html' %}{% block title %}Home{% endblock %}{% block content %}<h1>Flask Web Lokal</h1><p>Contoh browser → route → Python → template.</p><a class="button" href="{{ url_for('product_list') }}">Lihat Produk</a>{% endblock %}
+{% extends "base.html" %}
+{% block title %}Home — Flask Lab P09{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">Python Web Programming</p>
+  <h1>Dari program terminal menjadi website Flask</h1>
+  <p>Contoh ini menunjukkan route, template, static asset, list/dictionary, form GET/POST, validasi server-side, search, feedback state, dan automated test.</p>
+  <div class="actions">
+    <a class="button" href="{{ url_for('product_list') }}">Lihat Produk</a>
+    <a class="button secondary" href="{{ url_for('product_new') }}">Tambah Produk</a>
+  </div>
+</section>
+
+<section aria-labelledby="ringkasan">
+  <h2 id="ringkasan">Ringkasan Data In-Memory</h2>
+  <div class="card-grid">
+    <article class="card">
+      <span class="metric">{{ total_products }}</span>
+      <p>jenis produk</p>
+    </article>
+    <article class="card">
+      <span class="metric">{{ total_stock }}</span>
+      <p>total unit stok</p>
+    </article>
+    <article class="card">
+      <span class="metric">GET/POST</span>
+      <p>form diproses oleh Flask</p>
+    </article>
+  </div>
+</section>
+
+<section class="note">
+  <h2>Catatan pembelajaran</h2>
+  <p>Data belum memakai database. Jika process Flask direstart, perubahan data kembali ke kondisi awal. Hal ini sengaja dipertahankan agar fokus Pertemuan 09 tetap pada web, route, template, form, dan UI/UX.</p>
+</section>
+{% endblock %}
