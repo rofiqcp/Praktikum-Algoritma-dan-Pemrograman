@@ -1,1 +1,12 @@
-{% extends 'base.html' %}{% block content %}<h1>Mock External API</h1><p>Source: {{ data['source'] }} · {{ data['updated_at'] }}</p><ul>{% for x in data['items'] %}<li>{{ x['name'] }}: {{ x['value'] }}</li>{% else %}<li>Empty state: tidak ada data eksternal.</li>{% endfor %}</ul>{% endblock %}
+{% extends 'base.html' %}
+{% block content %}
+<h1>Mock External API</h1>
+<p><a href="?mode=success">Success</a> | <a href="?mode=empty">Empty</a> | <a href="?mode=timeout">Timeout</a> | <a href="?mode=error">Error</a></p>
+<p>State: {{ result.state }}</p>
+{% if result.state == 'success' %}
+<p>Source: {{ data.source }} · {{ data.updated_at }}</p>
+<ul>{% for x in data['items'] %}<li>{{ x['name'] }}: {{ x['value'] }}</li>{% endfor %}</ul>
+{% else %}
+<p>{{ result.message }}</p>
+{% endif %}
+{% endblock %}
