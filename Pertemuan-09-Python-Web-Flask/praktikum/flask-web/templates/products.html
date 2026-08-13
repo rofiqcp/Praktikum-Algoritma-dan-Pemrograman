@@ -1,1 +1,51 @@
-{% extends 'base.html' %}{% block title %}Produk{% endblock %}{% block content %}<div class="row"><h1>Produk</h1><a class="button" href="{{ url_for('product_new') }}">Tambah Produk</a></div>{% if products %}<table><thead><tr><th>ID</th><th>Nama</th><th>Harga</th><th>Stok</th></tr></thead><tbody>{% for p in products %}<tr><td>{{p.id}}</td><td>{{p.name}}</td><td>Rp{{ '{:,.0f}'.format(p.price) }}</td><td>{{p.stock}}</td></tr>{% endfor %}</tbody></table>{% else %}<p class="empty">Belum ada produk.</p>{% endif %}{% endblock %}
+{% extends 'base.html' %}
+{% block title %}Daftar Produk{% endblock %}
+{% block content %}
+<section aria-labelledby="products-title">
+  <div class="row">
+    <div>
+      <h1 id="products-title">Daftar Produk</h1>
+      <p>Data contoh disimpan sementara di memori aplikasi dan akan kembali ke kondisi awal saat server dimulai ulang.</p>
+    </div>
+    <a class="button" href="{{ url_for('product_new') }}">Tambah Produk</a>
+  </div>
+
+  {% if saved %}
+    <p class="alert success" role="status">Produk berhasil ditambahkan.</p>
+  {% endif %}
+
+  <form method="get" action="{{ url_for('product_list') }}" aria-label="Pencarian produk">
+    <label for="q">Cari nama produk</label>
+    <input id="q" name="q" type="search" value="{{ q }}" placeholder="Contoh: keyboard">
+    <div class="row">
+      <button type="submit">Cari</button>
+      {% if q %}<a class="button" href="{{ url_for('product_list') }}">Reset pencarian</a>{% endif %}
+    </div>
+  </form>
+
+  {% if products %}
+    <div class="table-wrap" role="region" aria-label="Tabel produk" tabindex="0">
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Nama</th><th>Harga</th><th>Stok</th><th>Aksi</th></tr>
+        </thead>
+        <tbody>
+          {% for p in products %}
+          <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.name }}</td>
+            <td>Rp{{ '{:,.0f}'.format(p.price) }}</td>
+            <td>{% if p.stock == 0 %}<span class="badge">Habis</span>{% else %}{{ p.stock }}{% endif %}</td>
+            <td><a href="{{ url_for('product_detail', product_id=p.id) }}">Lihat detail</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% elif q %}
+    <p class="empty" role="status">Tidak ada produk yang cocok dengan pencarian “{{ q }}”.</p>
+  {% else %}
+    <p class="empty" role="status">Belum ada produk. Gunakan tombol “Tambah Produk” untuk memasukkan data pertama.</p>
+  {% endif %}
+</section>
+{% endblock %}
