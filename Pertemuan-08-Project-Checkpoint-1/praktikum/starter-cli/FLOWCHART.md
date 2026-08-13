@@ -1,20 +1,39 @@
-# Contoh Flowchart/Pseudocode
+# Contoh Flowchart/Pseudocode — Checkpoint 1
+
+## Flow Menu Utama
+
+```mermaid
+flowchart TD
+    A[Mulai] --> B[Inisialisasi data]
+    B --> C[Tampilkan menu]
+    C --> D{Pilihan}
+    D -->|Tambah| E[Validasi dan tambah data]
+    D -->|Lihat| F[Tampilkan data]
+    D -->|Cari| G[Cari data]
+    D -->|Hapus| H[Cari lalu hapus]
+    D -->|Statistik| I[Hitung ringkasan]
+    D -->|Keluar| J[Selesai]
+    E --> C
+    F --> C
+    G --> C
+    H --> C
+    I --> C
+```
+
+## Pseudocode
 
 ```text
 START
-  data = []
-  LOOP
+buat data kosong
+WHILE program aktif
     tampilkan menu
     baca pilihan
-    IF tambah -> validasi -> append
-    ELSE IF lihat -> tampilkan data
-    ELSE IF cari -> cari nama
-    ELSE IF hapus -> cari -> remove
-    ELSE IF statistik -> aggregate
-    ELSE IF keluar -> BREAK
-    ELSE -> pesan invalid
-  END LOOP
+    jalankan function sesuai pilihan
+    validasi input sebelum mengubah data
+    tampilkan hasil operasi
+END WHILE
 END
 ```
 
-Ganti dengan flowchart yang benar-benar sesuai project pilihan.
+## Tugas Mahasiswa
+Flowchart di atas hanya contoh struktur. Ganti dengan flowchart project pilihan dan tambahkan minimal satu flow khusus untuk aturan penting, misalnya stok tidak cukup, kapasitas penuh, data duplikat, nilai batas, atau data tidak ditemukan.
