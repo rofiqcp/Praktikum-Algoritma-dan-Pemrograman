@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Detail Produk{% endblock %}
+{% block content %}
+<h1>Detail Produk</h1>
+<dl>
+  <dt>ID</dt><dd>{{ product.id }}</dd>
+  <dt>Nama</dt><dd>{{ product.name }}</dd>
+  <dt>Harga</dt><dd>Rp{{ product.price|int }}</dd>
+  <dt>Stok</dt><dd>{{ product.stock }}</dd>
+</dl>
+<p><a href="{{ url_for('product_list') }}">Kembali ke daftar</a></p>
+{% endblock %}
