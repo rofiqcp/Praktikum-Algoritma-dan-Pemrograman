@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<h1>Produk</h1>{% if products %}<table><tr><th>Nama</th><th>Harga</th><th>Stok</th></tr>{% for p in products %}<tr><td>{{p.name}}</td><td>{{p.price}}</td><td>{{p.stock}}</td></tr>{% endfor %}</table>{% else %}<p>Belum ada data</p>{% endif %}{% endblock %}

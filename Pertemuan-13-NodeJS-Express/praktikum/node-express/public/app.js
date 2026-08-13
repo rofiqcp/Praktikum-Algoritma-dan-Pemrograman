@@ -1,0 +1,1 @@
+document.querySelector('#btn').addEventListener('click',async()=>{const out=document.querySelector('#out');out.textContent='Loading...';try{const r=await fetch('/api/hello');if(!r.ok)throw new Error(`HTTP ${r.status}`);out.textContent=JSON.stringify(await r.json(),null,2)}catch(e){out.textContent=`Gagal: ${e.message}`}});

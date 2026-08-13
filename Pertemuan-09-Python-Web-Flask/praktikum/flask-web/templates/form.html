@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<h1>Tambah Produk</h1><form method="post"><input name="name" required placeholder="Nama"><input name="price" type="number" min="0" required><input name="stock" type="number" min="0" required><button>Simpan</button></form>{% for m in errors.values() %}<p class="error">{{m}}</p>{% endfor %}{% endblock %}

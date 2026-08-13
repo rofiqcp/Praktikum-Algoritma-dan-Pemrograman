@@ -1,0 +1,1 @@
+body{font-family:system-ui;max-width:900px;margin:auto;padding:1rem;line-height:1.5}nav{display:flex;gap:1rem}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:.5rem}.error{color:#b00020}.success{background:#e8f5e9;padding:.5rem}form{display:grid;gap:.6rem;max-width:420px}input,button{padding:.6rem;font:inherit}
