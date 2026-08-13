@@ -1,5 +1,6 @@
 from flask import Blueprint,jsonify,request
 from services import product_service as service
+from schemas.product import exact_int
 bp=Blueprint("products",__name__,url_prefix="/api")
 
 def error_response(e):
@@ -7,28 +8,45 @@ def error_response(e):
     if e.details:b["error"]["details"]=e.details
     return jsonify(b),e.status
 
+def body():
+    payload=request.get_json(silent=True)
+    return payload if payload is not None else {}
+
 @bp.get('/categories')
-def categories(): return jsonify({"data":service.categories()})
+def categories():return jsonify({"data":service.categories()})
+
 @bp.get('/products')
 def products():
-    cid=request.args.get('category_id',type=int); return jsonify({"data":service.list_products(request.args.get('q',''),cid)})
+    raw=request.args.get('category_id');cid=None
+    if raw not in (None,''):
+        try:
+            cid=exact_int(raw)
+            if cid<=0:raise ValueError
+        except (ValueError,TypeError,OverflowError):
+            return error_response(service.ServiceError("VALIDATION_ERROR","Filter tidak valid",400,{"category_id":"harus integer > 0"}))
+    return jsonify({"data":service.list_products(request.args.get('q',''),cid)})
+
 @bp.get('/products/<int:pid>')
 def detail(pid):
     try:return jsonify(service.get(pid))
     except service.ServiceError as e:return error_response(e)
+
 @bp.post('/products')
 def create():
-    try:return jsonify(service.create(request.get_json(silent=True) or {})),201
+    try:return jsonify(service.create(body())),201
     except service.ServiceError as e:return error_response(e)
+
 @bp.patch('/products/<int:pid>')
 def update(pid):
-    try:return jsonify(service.update(pid,request.get_json(silent=True) or {}))
+    try:return jsonify(service.update(pid,body()))
     except service.ServiceError as e:return error_response(e)
+
 @bp.delete('/products/<int:pid>')
 def delete(pid):
-    try:service.delete(pid); return '',204
+    try:service.delete(pid);return '',204
     except service.ServiceError as e:return error_response(e)
+
 @bp.post('/products/<int:pid>/stock-movements')
 def stock(pid):
-    try:return jsonify(service.move_stock(pid,request.get_json(silent=True) or {})),201
+    try:return jsonify(service.move_stock(pid,body())),201
     except service.ServiceError as e:return error_response(e)
